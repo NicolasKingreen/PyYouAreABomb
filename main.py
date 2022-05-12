@@ -4,7 +4,7 @@ pygame.init()
 
 import random
 
-SCREEN_SIZE = 852, 480
+SCREEN_SIZE = 832, 480
 SCREEN_WIDTH, SCREEN_HEIGHT = SCREEN_SIZE
 TARGET_FPS = 60
 
@@ -29,7 +29,7 @@ class Field:
         self.width, self.height = size
         self.blocks = [[None for _ in range(self.height)] for _ in range(self.width)]
 
-    def set_start_blocks(self):
+    def set_starting_blocks(self):
         for x in range(self.width):
             random_gap = random.randint(self.height // 3, (self.height * 2) // 3 - 1)
             for y in range(self.height - 1, random_gap, -1):
@@ -44,7 +44,7 @@ class Game:
         self.is_running = False
 
         self.field = Field((WIDTH_IN_BLOCKS, HEIGHT_IN_BLOCKS))
-        self.field.set_start_blocks()
+        self.field.set_starting_blocks()
 
         self.BRICK_SPRITE = pygame.image.load(BRICK_SPRITE_PATH).convert()
         self.BRICK_SPRITE = pygame.transform.scale(self.BRICK_SPRITE,
